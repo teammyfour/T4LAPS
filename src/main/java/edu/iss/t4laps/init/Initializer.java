@@ -1,4 +1,4 @@
-package edu.iss.laps;
+package edu.iss.t4laps.init;
 
 import javax.servlet.Filter;
 
