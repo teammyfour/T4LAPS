@@ -35,7 +35,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages="edu.iss.t4laps")
 @PropertySource({ "classpath:application.properties",
 		"classpath:/i18n/messages.properties" })
-@EnableJpaRepositories("edu.iss.t4laps.repository")
+@EnableJpaRepositories("edu.iss.t4laps.respository")
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
 	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
