@@ -10,7 +10,7 @@ import edu.iss.t4laps.model.User;
 
 public interface UserRepository extends JpaRepository<User, String> {
 	
-	@Query("SELECT DISTINCT e2.name FROM User u, Employee e1, Employee e2 WHERE u.employeeId = e1.employeeId AND e1.managerId = e2.employeeId AND u.userId=:uid")
+	@Query("SELECT DISTINCT e2.emp_name FROM User u, Employee e1, Employee e2 WHERE u.employeeId = e1.employeeId AND e1.managerId = e2.employeeId AND u.userId=:uid")
 	ArrayList<String> findManagerNameByUID(@Param("uid") String uid);
     
 	@Query("SELECT u FROM User u WHERE u.name=:un AND u.password=:pwd")

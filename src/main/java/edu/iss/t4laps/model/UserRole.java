@@ -17,7 +17,7 @@ public class UserRole {
 	@Id
 	@Column(name = "roleid")
 	private String roleId;
-	@Column(name = "name")
+	@Column(name = "role_name")
 	private String name;
 	@Column(name = "description")
 	private String description;
