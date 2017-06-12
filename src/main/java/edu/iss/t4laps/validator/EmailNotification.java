@@ -43,7 +43,7 @@ public class EmailNotification {
 					InternetAddress.parse(email_id));
 			message.setSubject("leave application");
 			message.setText("Dear Manager ," +
-					"\n\n Hi ,Employee with '"+empId+"' applied for leave");
+					"\n\n Hi ,Employee with '"+empId+"' applied for leave"+"\n\n http://localhost:8082/T4LAPS/home/print");
 
 			Transport.send(message);
 

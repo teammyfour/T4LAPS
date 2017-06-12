@@ -17,5 +17,6 @@ public interface LeaveHistoryService {
 	public String findEmailId(int empId);
 	public int findTotalDays(int empId,String leaveType);
 	public int findAnualWorkingDays(int empid);
+	public int findMedicalWorkingDays(int empid);
 
 }

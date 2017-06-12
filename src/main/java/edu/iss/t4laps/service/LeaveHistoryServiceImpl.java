@@ -87,4 +87,10 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 		// TODO Auto-generated method stub
 		return leavehistoryRepository.findAnualWorkingDays(empid);
 	}
+
+	@Override
+	public int findMedicalWorkingDays(int empid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
