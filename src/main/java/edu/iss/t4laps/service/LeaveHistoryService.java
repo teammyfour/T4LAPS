@@ -14,5 +14,8 @@ public interface LeaveHistoryService {
 	public String findEmpName(int leaveId);
 	public int updateLeaveHistory(int leaveId,int empId,String leavetype,Date sDate,Date eDate,String reason,String status,int workingDays);
 	public int updateStatus(int leaveId,String status);
+	public String findEmailId(int empId);
+	public int findTotalDays(int empId,String leaveType);
+	public int findAnualWorkingDays(int empid);
 
 }

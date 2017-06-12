@@ -10,9 +10,9 @@ import edu.iss.t4laps.model.UserRole;
 
 public interface UserRoleRepository extends  JpaRepository<UserRole, String> {
 	
-	@Query("SELECT r.name FROM Role r")
+	@Query("SELECT r.name FROM UserRole r")
 	ArrayList<String> findAllRolesNames();
 	
-	@Query("SELECT r FROM Role r WHERE r.name = :name")
+	@Query("SELECT r FROM UserRole r WHERE r.name = :name")
 	ArrayList<UserRole> findRoleByName(@Param("name") String name);
 }

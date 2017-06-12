@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "leave_entitlement")
+@Table(name = "leave_entitlements")
 public class LeaveEntitlement {
 
 	@Id

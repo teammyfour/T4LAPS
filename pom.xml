@@ -1,15 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.springframework.samples.service.service</groupId>
-	<artifactId>T4LAPS</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-
-	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springframework.samples.service.service</groupId>
+  <artifactId>T4LAPS</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+    <properties>
 
 		<jdk.version>1.8</jdk.version>
 		<java.version>1.6</java.version>
+
 		<spring.version>4.2.6.RELEASE</spring.version>
 
 		<spring-security.version>4.1.0.RELEASE</spring-security.version>
@@ -46,13 +46,13 @@
 
 		<spring-test-dbunit.version>1.2.1</spring-test-dbunit.version>
 
-	</properties>
+    </properties>
 
 	<dependencies>
 
+	
 
-
-		<!-- SPRING -->
+	   <!-- SPRING -->
 
 		<dependency>
 
@@ -225,6 +225,17 @@
 			<version>${jsp.version}</version>
 
 		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
 
 		<dependency>
 
@@ -289,10 +300,10 @@
 		</dependency>
 
 	</dependencies>
-
+	
 	<build>
 
-		<plugins>
+				<plugins>
 
 			<plugin>
 
@@ -359,6 +370,6 @@
 		</plugins>
 
 	</build>
-
-
-</project>
+	
+	
+	</project>

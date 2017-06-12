@@ -8,6 +8,10 @@ YOUR MENU
 					<li><spring:url value="/staff/applyleave" var="apply"
 							htmlEscape="true" /> <a href="${apply}"> <spring:message
 								code="Apply Leave" />
+								</a></li>
+					<li><spring:url value="/staff/applycompensationleave" var="applycompensation"
+							htmlEscape="true" /> <a href="${applycompensation}"> <spring:message
+								code="Leave compensation" />
 					</a></li>
 					<li><spring:url value="/staff/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message
