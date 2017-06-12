@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.iss.t4laps.model.EmployeeDetails;
-import edu.iss.t4laps.respository.EmployeeRespository;
-import edu.iss.t4laps.respository.OvertimeRespository;
+import edu.iss.t4laps.repository.EmployeeRespository;
+import edu.iss.t4laps.repository.OvertimeRespository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{

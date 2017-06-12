@@ -1,4 +1,4 @@
-package edu.iss.t4laps.respository;
+package edu.iss.t4laps.repository;
 
 import java.util.List;
 
