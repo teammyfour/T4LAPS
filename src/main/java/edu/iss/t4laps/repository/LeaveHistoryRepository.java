@@ -29,7 +29,7 @@ public interface LeaveHistoryRepository extends JpaRepository<LeaveHistory, Inte
 	int updateStatus(@Param("status") String status,@Param("leaveid") int leaveid);
 	@Query("SELECT e.email_address from EmployeeDetails e where e.employeeId=(SELECT e.managerId from EmployeeDetails e where e.employeeId=:empid)")
 	String findEmailId(@Param("empid") int empid);
-	@Query("SELECT  COALESCE(SUM(l.number_of_days),0) FROM LeaveHistory l where l.employeeId=:empid AND l.leavetype=:leaveType")
+	@Query("SELECT  COALESCE(SUM(l.number_of_days),0) FROM LeaveHistory l where l.employeeId=:empid AND l.leavetype=:leaveType AND l.status='APPROVED'")
 	int findTotalDays(@Param("empid") int empid,@Param("leaveType") String leaveType);
 	@Query("SELECT le.annual_leave from LeaveEntitlement le where le.designation=(SELECT e.designation FROM EmployeeDetails e WHERE e.employeeId=:empid)")
 	int findAnualWorkingDays(@Param("empid")int empid);
