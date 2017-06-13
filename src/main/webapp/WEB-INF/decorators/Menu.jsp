@@ -39,17 +39,7 @@
 					<li><spring:url value="/staff/applyleave" var="apply"
 							htmlEscape="true" /> <a href="${apply}"> <spring:message
 								code="Apply Leave" />
-<<<<<<< HEAD
-=======
 								</a></li>
-					<li><spring:url value="/staff/applycompensationleave" var="applycompensation"
-							htmlEscape="true" /> <a href="${applycompensation}"> <spring:message
-								code="Claim compensation" />
-					<li><spring:url value="/adminholiday/publicholiday/list" var="publicholiday"
-							htmlEscape="true" /> <a href="${publicholiday}"> <spring:message
-								code="Public holiday List" />
->>>>>>> branch 'master' of https://github.com/teammyfour/T4LAPS.git
-					</a></li>
 					<li><spring:url value="/staff/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message
 								code="logout" />
