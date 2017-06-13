@@ -1,16 +1,21 @@
 package edu.iss.t4laps.model;
 
+import java.util.regex.Pattern;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+
+
+
 
 @Entity
 @Table(name = "employee_details")
 public class EmployeeDetails {
-    @Id
-	
+    @Id	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employeeId;
     private String emp_name;

@@ -14,4 +14,7 @@ public interface EmployeeService {
 	void removeEmployee(EmployeeDetails employee);
 
 	EmployeeDetails changeEmployee(EmployeeDetails employee);
+	
+	ArrayList<Integer> findAllID();
 }
+

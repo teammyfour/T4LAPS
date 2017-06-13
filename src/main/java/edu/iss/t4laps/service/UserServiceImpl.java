@@ -86,4 +86,10 @@ public class UserServiceImpl implements UserService{
 		return u;
 	}
 
+	@Override
+	@Transactional
+	public User findUserByEmployeeId(int id) {
+		return userRepository.findUserByEmployeeId(id);
+	}
+
 }

@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 
 /**
  * Department class
@@ -21,8 +22,10 @@ public class LeaveEntitlement {
 	private String designation;
 	@Basic
 	@Column(name = "annual_leave")
+	@Digits(integer=3, fraction=0, message="The value must be numeric and no more than 3 digits")
 	private int annual_leave;
 	@Column(name = "medical_leave")
+	@Digits(integer=3, fraction=0, message="The value must be numeric and no more than 3 digits")
 	private int medical_leave;
 
 	public LeaveEntitlement () {
