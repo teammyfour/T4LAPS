@@ -69,9 +69,10 @@ public class staffController {
 	    int appliedLeaveDays=leaveHistoryService.findTotalDays(emplyeeId,leavetype);
 	    int annualLeaves=leaveHistoryService.findAnualWorkingDays(emplyeeId);
 	    int medicalLeaves=leaveHistoryService.findMedicalWorkingDays(emplyeeId);
+	    int remaining_workingDays=annualLeaves-appliedLeaveDays;
 	    ModelAndView mv=new ModelAndView();
 	    
-	    if(appliedLeaveDays <= annualLeaves && workingDays<=14 )
+	    if(appliedLeaveDays <= annualLeaves && workingDays<=14  && workingDays <=remaining_workingDays)
 	    {
 	    LeaveHistory leavehistory = new LeaveHistory(emplyeeId, leavetype, date, date1, reason, status,workingDays);
 	    leaveHistoryService.insertLeave(leavehistory);
