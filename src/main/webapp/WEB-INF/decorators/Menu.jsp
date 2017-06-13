@@ -12,6 +12,9 @@ YOUR MENU
 					<li><spring:url value="/staff/applycompensationleave" var="applycompensation"
 							htmlEscape="true" /> <a href="${applycompensation}"> <spring:message
 								code="Claim compensation" />
+					<li><spring:url value="/adminholiday/publicholiday/list" var="publicholiday"
+							htmlEscape="true" /> <a href="${publicholiday}"> <spring:message
+								code="Public holiday List" />
 					</a></li>
 					<li><spring:url value="/staff/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message
