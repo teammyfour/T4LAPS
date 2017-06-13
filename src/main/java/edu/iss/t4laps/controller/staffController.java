@@ -119,12 +119,13 @@ public class staffController {
 	   return mv;
    }
 	@RequestMapping(value="/leavehistory_edit")
-	public ModelAndView leaveHistoryEdit(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView leaveHistoryEdit(HttpServletRequest req, HttpServletResponse res,HttpSession session)
 	{
 		Date date = null;
 		Date date1 = null;
 		int leaveId=(int) (req.getSession().getAttribute("leaveId"));
-		int emplyeeId = Integer.parseInt(req.getParameter("txtId"));
+		UserSession us= (UserSession) session.getAttribute("USERSESSION");
+		int emplyeeId = (us.getEmployee().getEmployeeId());
 		req.getSession().setAttribute("empId", emplyeeId);
 		String name = req.getParameter("txtname");
 		String leavetype = req.getParameter("leavetype");
@@ -160,11 +161,12 @@ public class staffController {
 		return mv;
 	}
 	@RequestMapping(value="/applyleave_cancel")
-	public ModelAndView leaveHistoryCancel(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView leaveHistoryCancel(HttpServletRequest req, HttpServletResponse res,HttpSession session)
 	{
 		int leaveId=Integer.parseInt(req.getParameter("leaveid"));
 		System.out.println(req.getParameter("leaveid"));
-		int employeeId=(int) req.getSession().getAttribute("empId");
+		UserSession us= (UserSession) session.getAttribute("USERSESSION");
+		int employeeId = (us.getEmployee().getEmployeeId());
 		
 		System.out.println(req.getParameter("empid"));
 		String status="CANCELLED";
@@ -179,6 +181,12 @@ public class staffController {
 	public String applyLeaveCompensation(HttpServletRequest req, HttpServletResponse res)
 	{
 		return "leavecompenstation";
+	}
+	
+	@RequestMapping(value="/leavecompensationPage")
+	public String leaveCompensationSubmittedPage(HttpServletRequest req, HttpServletResponse res)
+	{
+		return "compensation-leave-submitted";
 	}
 	
 	@RequestMapping(value = "/logout")

@@ -11,7 +11,7 @@ YOUR MENU
 								</a></li>
 					<li><spring:url value="/staff/applycompensationleave" var="applycompensation"
 							htmlEscape="true" /> <a href="${applycompensation}"> <spring:message
-								code="Leave compensation" />
+								code="Claim compensation" />
 					</a></li>
 					<li><spring:url value="/staff/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message

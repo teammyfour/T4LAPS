@@ -26,7 +26,7 @@
 					<option value="Annual">${leavehistoryedit.leavetype}</option>
 					<option value="Medical">Medical</option>
 					<option value="Annual">Annual</option>
-					<option value="Compenstation">Compenstation</option>
+					
 			</select></td>
 		</tr>
 		<tr>

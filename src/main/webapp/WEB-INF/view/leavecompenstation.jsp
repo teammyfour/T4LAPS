@@ -7,11 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="leavecompensationPage">
 <table>
-<tr><td>EmployeeId:</td><td><input type="text" name="txtEmpId"></td>
-<tr><td>Date:</td><td><input type="date" name="date"></td></tr>
-<tr><td>ExtrHours:</td><td><input type="text" name="hourstxt"></td></tr>
+<tr><td>EmployeeId:</td><td><input type="text" name="txtEmpId" value="${empId}" disabled></td>
+<tr><td>Name:</td><td><input type="text" name="txtname" value="${empName}" required></td></tr>
+<tr><td>StartDate:</td><td><input type="date" name="sdate" required></td></tr>
+<tr><td>EndDate:</td><td><input type="date" name="edate" required></td></tr>
+<tr><td>Reason:</td><td><input type="text" name="txtreason" required></td></tr>
 <tr><td><input type="submit" value="Submit"></td></tr>
 </table>
+</form>
 </body>
 </html>
