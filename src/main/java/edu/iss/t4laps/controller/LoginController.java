@@ -40,8 +40,8 @@ public class LoginController {
 		if (result.hasErrors())
 			return mav;
 		UserSession us = new UserSession();
-		if (user.getName() != null && user.getPassword() != null) {
-			User u = uService.authenticate(user.getName(), user.getPassword());
+		if (user.getUserId() != null && user.getPassword() != null) {
+			User u = uService.authenticate(user.getUserId(), user.getPassword());
 			us.setUser(u);
 			// PUT CODE FOR SETTING SESSION ID
 			us.setSessionId(session.getId());
