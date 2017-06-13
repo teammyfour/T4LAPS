@@ -16,5 +16,7 @@ public interface EmployeeService {
 	EmployeeDetails changeEmployee(EmployeeDetails employee);
 	
 	ArrayList<Integer> findAllID();
+	
+	String EmployeeName(int id);
 }
 

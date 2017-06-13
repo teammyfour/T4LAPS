@@ -17,11 +17,6 @@
                           htmlEscape="true" /> <a href="${mentitlement}"> <spring:message
                              code="Maintain Entitlement" />
                    </a></li>
-                                                              
-                <li><spring:url value="/admin/overtime/general" var="movertime"
-                           htmlEscape="true" /> <a href="${movertime}"> <spring:message
-                               code="Maintain Overtime" />
-                </a></li>
 					<li><a href="${pageContext.request.contextPath}/adminholiday/publicholiday/list"">Maintain Public Holiday</a></li>
                 <li><spring:url value="/admin/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message

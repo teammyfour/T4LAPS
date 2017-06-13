@@ -54,5 +54,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return eRepository.findAllID();
 	}
 
+	@Override
+	public String EmployeeName(int id) {
+		return eRepository.EmployeeName(id);
+	}
+	
+
+
 }
 
