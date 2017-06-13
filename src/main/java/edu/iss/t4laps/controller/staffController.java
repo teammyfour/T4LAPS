@@ -124,7 +124,8 @@ public class staffController {
 	{
 		Date date = null;
 		Date date1 = null;
-		int leaveId=(int) (req.getSession().getAttribute("leaveId"));
+		int leaveId=(int)(req.getSession().getAttribute("leaveId"));
+		
 		UserSession us= (UserSession) session.getAttribute("USERSESSION");
 		int emplyeeId = (us.getEmployee().getEmployeeId());
 		req.getSession().setAttribute("empId", emplyeeId);

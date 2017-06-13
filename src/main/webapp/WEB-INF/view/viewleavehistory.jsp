@@ -9,8 +9,8 @@
 
 </head>
 <body>
-Welcome to viewhistory!!
-<h3>View Employee Leave History
+
+<h3> Leave History
 
 <table>
 <tr><td>LeaveID</td><td>EmployeeID</td><td>LeaveType</td><td>StartDate</td><td>EndDate</td><td>LeaveDays</td><td>reason</td>
