@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,10 +90,11 @@ public class staffController {
 		return mv;
 	}
 	@RequestMapping(value = "/viewleavehistoryPage")
-	public ModelAndView viewleavehistoryPage(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView viewleavehistoryPage(HttpServletRequest req, HttpServletResponse res,HttpSession session)
 	{
-		int empId=(int) req.getSession().getAttribute("empId");
-		 ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(empId);
+		UserSession us= (UserSession) session.getAttribute("USERSESSION");
+		
+		 ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(us.getEmployee().getEmployeeId());
 		    ModelAndView mv=new ModelAndView();
 		    mv.setViewName("viewleavehistory");
 		    mv.addObject("leavehistoryList",leaveHistoryList);
@@ -174,6 +176,13 @@ public class staffController {
 	public String applyLeaveCompensation(HttpServletRequest req, HttpServletResponse res)
 	{
 		return "leavecompenstation";
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/home/login";
+
 	}
 	
 }

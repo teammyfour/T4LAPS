@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.iss.t4laps.model.UserRole;
 import edu.iss.t4laps.repository.UserRoleRepository;
-
+@Service
 public class UserRoleServiceImpl implements UserRoleService{
 	
 	@Resource
@@ -52,9 +53,9 @@ public class UserRoleServiceImpl implements UserRoleService{
 
 	@Override
 	@Transactional	
-	public ArrayList<String> findAllUserRolesNames() {
+	public ArrayList<String> findAllUserRolesNames(String userid) {
 		// TODO Auto-generated method stub
-		return userRoleRepository.findAllRolesNames();
+		return userRoleRepository.findAllRolesNames(userid);
 	}
 
 	@Override

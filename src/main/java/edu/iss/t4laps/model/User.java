@@ -25,10 +25,10 @@ public class User {
 	@Column(name = "user_name")
 	private String name;
 	private String password;
-	private String employeeId;
+	private int employeeId;
 
 	@ManyToMany(targetEntity = UserRole.class, cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name = "userrole", joinColumns = {
+	@JoinTable(name = "user_role", joinColumns = {
 			@JoinColumn(name = "userid", referencedColumnName = "userid") }, inverseJoinColumns = {
 					@JoinColumn(name = "roleid", referencedColumnName = "roleid") }
 
@@ -41,7 +41,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String userId, String name, String password, String employeeId) {
+	public User(String userId, String name, String password, int employeeId) {
 		this.userId = userId;
 		this.name = name;
 		this.password = password;
@@ -76,11 +76,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 

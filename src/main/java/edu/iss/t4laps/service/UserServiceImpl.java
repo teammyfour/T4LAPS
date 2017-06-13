@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.iss.t4laps.model.User;
 import edu.iss.t4laps.model.UserRole;
 import edu.iss.t4laps.repository.UserRepository;
-
+@Service
 public class UserServiceImpl implements UserService{
 	
     @Resource

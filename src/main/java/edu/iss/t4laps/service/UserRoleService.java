@@ -11,7 +11,7 @@ public interface UserRoleService {
 	UserRole createUserRole(UserRole role);
 	UserRole changeUserRole(UserRole role);
 	void removeUserRole(UserRole role);
-	ArrayList<String> findAllUserRolesNames();
+	ArrayList<String> findAllUserRolesNames(String userid);
 	ArrayList<UserRole> findUserRoleByName(String name);
 
 
