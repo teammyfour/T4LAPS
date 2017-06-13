@@ -1,7 +1,6 @@
 package edu.iss.t4laps.controller;
 
-import java.util.ArrayList;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.iss.t4laps.model.EmployeeDetails;
 import edu.iss.t4laps.model.User;
 import edu.iss.t4laps.service.EmployeeService;
 import edu.iss.t4laps.service.UserService;
@@ -35,7 +33,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ModelAndView authenticate(@ModelAttribute User user, HttpSession session, BindingResult result) {
+	public ModelAndView authenticate(@ModelAttribute User user, HttpSession session, BindingResult result,HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("login");
 		if (result.hasErrors())
 			return mav;
@@ -46,6 +44,8 @@ public class LoginController {
 			// PUT CODE FOR SETTING SESSION ID
 			us.setSessionId(session.getId());
 			us.setEmployee(eService.findEmployee(us.getUser().getEmployeeId()));
+			String name=eService.EmployeeName(us.getUser().getEmployeeId());
+			req.getSession().setAttribute("empName", name);			
 			mav = new ModelAndView("redirect:/staff/viewleavehistoryPage");
 		} else {
 			return mav;

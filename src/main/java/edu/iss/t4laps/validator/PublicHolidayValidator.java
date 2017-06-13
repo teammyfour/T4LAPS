@@ -18,7 +18,7 @@ public class PublicHolidayValidator implements Validator {
 	@Override
 	public void validate(Object arg0, Errors errors) {
 		PublicHolidays r = (PublicHolidays) arg0;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "holiday_date", "Holiday Date is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "holiday_date", "error.occasion.empty");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "occasion", "error.occasion.empty");
 		System.out.println(r.toString());
 
