@@ -48,6 +48,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public EmployeeDetails changeEmployee(EmployeeDetails employee) {
 		return eRepository.saveAndFlush(employee);
 	}
+	
+	@Override
+	public ArrayList<Integer> findAllID() {
+		return eRepository.findAllID();
+	}
 
 }
 

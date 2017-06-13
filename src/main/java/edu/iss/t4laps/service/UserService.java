@@ -16,6 +16,7 @@ public interface UserService {
 	ArrayList<String> findRoleNamesForUser(String userId);
 	ArrayList<String> findManagerNameByUID(String userId);	
 	User authenticate(String uname, String pwd);
+	User findUserByEmployeeId(int id);
 
 }
 

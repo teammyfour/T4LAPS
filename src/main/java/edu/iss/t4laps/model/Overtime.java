@@ -11,7 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Constraint;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -20,12 +24,16 @@ public class Overtime implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="overtime_id")
+	@NotNull
 	private int overtimeId;
 	private int employeeId;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd-MM-yyyy")
+	@NotNull
 	private Date date;
 	@Column(name="extra_hours")
+	@NotNull
+	@Digits(integer=1, fraction=0, message="The value must be numeric and no more than 1 digit")
 	private int extraHours;
 	
 	
