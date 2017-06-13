@@ -8,6 +8,7 @@
     <properties>
 
 		<jdk.version>1.8</jdk.version>
+		<java.version>1.6</java.version>
 
 		<spring.version>4.2.6.RELEASE</spring.version>
 
@@ -223,6 +224,17 @@
 
 			<version>${jsp.version}</version>
 
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
 		</dependency>
 
 		<dependency>

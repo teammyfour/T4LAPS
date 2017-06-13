@@ -69,4 +69,28 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 		// TODO Auto-generated method stub
 		return leavehistoryRepository.updateStatus(status,leaveId);
 	}
+
+	@Override
+	public String findEmailId(int empId) {
+		// TODO Auto-generated method stub
+		return leavehistoryRepository.findEmailId(empId);
+	}
+
+	@Override
+	public int findTotalDays(int empId,String leaveType) {
+		// TODO Auto-generated method stub
+		return leavehistoryRepository.findTotalDays(empId,leaveType);
+	}
+
+	@Override
+	public int findAnualWorkingDays(int empid) {
+		// TODO Auto-generated method stub
+		return leavehistoryRepository.findAnualWorkingDays(empid);
+	}
+
+	@Override
+	public int findMedicalWorkingDays(int empid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
