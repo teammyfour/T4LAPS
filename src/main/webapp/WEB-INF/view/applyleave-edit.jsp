@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td>EmployeeId:</td>
-			<td><input type="text" name="txtId" value="${leavehistoryedit.employeeId }" required></td>
+			<td><input type="text" name="txtId" value="${leavehistoryedit.employeeId}" disabled></td>
 		</tr>
 		<tr>
 			<td>Leave Type:</td>
@@ -31,12 +31,12 @@
 		</tr>
 		<tr>
 			<td>StartDate:</td>
-			<td><fmt:formatDate pattern="dd/mm/yyyy" value="${leavehistoryedit.startDate}" var="sDate" /><input type="date" id="StartDate" name="startDate" value="${sDate}" required
+			<td><fmt:formatDate pattern="dd/MM/YYYY" value="${leavehistoryedit.startDate}" var="sDate" /><input path="date" id="StartDate" name="startDate" value="${sDate}" required
 				></td>
 		</tr>
 		<tr>
 			<td>EndDate:</td>
-			<td><fmt:formatDate pattern="dd/mm/yyyy" value="${leavehistoryedit.endDate}" var="eDate" /><input type="date" id="EndDate" name="endDate" value="${eDate}" required
+			<td><fmt:formatDate pattern="dd/MM/YYYY" value="${leavehistoryedit.endDate}" var="eDate" /><input path="date" id="EndDate" name="endDate" value="${eDate}" required
 				></td>
 		</tr>
 		

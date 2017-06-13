@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<td>EmployeeId:</td>
-			<td><input type="text" name="txtId" value="${leavehistoryedit.employeeId }" required></td>
+			<td><input type="text" name="txtId" value="${empId}" disabled></td>
 		</tr>
 		<tr>
 			<td>Leave Type:</td>

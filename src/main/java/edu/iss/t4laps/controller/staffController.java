@@ -38,10 +38,11 @@ public class staffController {
 	}
 
 	@RequestMapping(value = "/viewleavehistory")
-	public ModelAndView viewLeaveHistory(HttpServletRequest req, HttpServletResponse res) {
+	public ModelAndView viewLeaveHistory(HttpServletRequest req, HttpServletResponse res,HttpSession session) {
 		Date date = null;
 		Date date1 = null;
-		int emplyeeId = Integer.parseInt(req.getParameter("txtId"));
+		UserSession us= (UserSession) session.getAttribute("USERSESSION");
+		int emplyeeId = (us.getEmployee().getEmployeeId());
 		String name = req.getParameter("txtname");
 		String leavetype = req.getParameter("leavetype");
 		String startDate = req.getParameter("startDate");
@@ -93,6 +94,8 @@ public class staffController {
 	public ModelAndView viewleavehistoryPage(HttpServletRequest req, HttpServletResponse res,HttpSession session)
 	{
 		UserSession us= (UserSession) session.getAttribute("USERSESSION");
+		int empId=us.getEmployee().getEmployeeId();
+		req.getSession().setAttribute("empId",empId);
 		
 		 ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(us.getEmployee().getEmployeeId());
 		    ModelAndView mv=new ModelAndView();
