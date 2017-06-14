@@ -17,8 +17,7 @@ import edu.iss.t4laps.model.EmployeeDetails;
 
 @Repository
 public interface EmployeeRespository extends  JpaRepository<EmployeeDetails, Integer> {
-	
-	//-----------new code------------//
+		
 	@Query("SELECT DISTINCT e.employeeId FROM EmployeeDetails e")
 	ArrayList<Integer> findAllID();
 
