@@ -93,4 +93,20 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	@Transactional
+	public LeaveHistory changeLeaveHistory(LeaveHistory leavehistory) {
+		return leavehistoryRepository.saveAndFlush(leavehistory);
+	}
+	@Override
+	@Transactional
+	public ArrayList<LeaveHistory> findSubmittedLeaveHistoryByEID(int empid){
+		return leavehistoryRepository.findSubmittedLeaveHistoryByEID(empid);
+	}
+	@Override
+	@Transactional
+	public LeaveHistory findLeaveHistory(int id){
+		return leavehistoryRepository.findOne(id);
+	}
+	
 }

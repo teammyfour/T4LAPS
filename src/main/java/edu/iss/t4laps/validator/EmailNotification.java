@@ -53,6 +53,45 @@ public class EmailNotification {
 			throw new RuntimeException(e);
 		}
 		}
+		public static void sendApprovalEmail(String emailId,int employeeID,String status)
+		{
+			String email_id=emailId;
+			int empId=employeeID;
+			String decisionStatus=status;
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+
+		Session session = Session.getDefaultInstance(props,
+			new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication("teammyfour@gmail.com","teammyfour4444");
+				}
+			});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("teammyfour@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(email_id));
+			message.setSubject("Leave Application (Approval or Rejection)");
+			message.setText("Dear Employee ," +
+					"\n\nHi,"+"\n\nEmployee with '"+empId+"'Your leave application is  "+decisionStatus +"."+"\n\n http://localhost:8082/T4LAPS/home/login");
+
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		}
+		
 	}
 
 

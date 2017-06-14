@@ -1,6 +1,8 @@
 package edu.iss.t4laps.controller;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.iss.t4laps.model.EmployeeDetails;
 import edu.iss.t4laps.model.User;
 import edu.iss.t4laps.service.EmployeeService;
 import edu.iss.t4laps.service.UserService;
@@ -64,7 +67,11 @@ public class LoginController {
 			us.setSessionId(session.getId());
 			us.setEmployee(eService.findEmployee(us.getUser().getEmployeeId()));
 			String name=eService.EmployeeName(us.getUser().getEmployeeId());
-			req.getSession().setAttribute("empName", name);			
+			req.getSession().setAttribute("empName", name);		
+			ArrayList<EmployeeDetails> subordinates = eService.findSubordinates(us.getUser().getEmployeeId());
+			if (subordinates != null) {
+				us.setSubordinates(subordinates);
+			}
 			mav = new ModelAndView("redirect:/staff/viewleavehistoryPage");
 		} 
 		}

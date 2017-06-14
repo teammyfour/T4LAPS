@@ -59,7 +59,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return eRepository.EmployeeName(id);
 	}
 	
-
+	@Override
+	public ArrayList<EmployeeDetails> findSubordinates(int employeeId) {
+		return eRepository.findSubordinates(employeeId);
+	}
 
 }
-

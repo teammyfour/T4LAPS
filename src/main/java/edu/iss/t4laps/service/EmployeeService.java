@@ -18,5 +18,6 @@ public interface EmployeeService {
 	ArrayList<Integer> findAllID();
 	
 	String EmployeeName(int id);
+	
+	ArrayList<EmployeeDetails> findSubordinates(int employeeId);
 }
-

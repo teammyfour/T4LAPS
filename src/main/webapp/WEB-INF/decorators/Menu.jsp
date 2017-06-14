@@ -25,7 +25,7 @@
 					</a></li>
 				</c:when>
 				<c:when test="${role.name eq 'manager' }">
-					<li><spring:url value="/manager/pending" var="pending"
+					<li><spring:url value="/manager/approval" var="pending"
 							htmlEscape="true" /> <a href="${pending}"> <spring:message
 								code="Leaves For Approval" />
 					</a></li>

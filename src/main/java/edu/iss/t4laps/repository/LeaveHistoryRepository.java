@@ -35,7 +35,8 @@ public interface LeaveHistoryRepository extends JpaRepository<LeaveHistory, Inte
 	int findAnualWorkingDays(@Param("empid")int empid);
 	@Query("SELECT le.medical_leave from LeaveEntitlement le where le.designation=(SELECT e.designation FROM EmployeeDetails e WHERE e.employeeId=:empid)")
 	int findMedicalWorkingDays(@Param("empid") int empid);
-	
+	@Query("SELECT l from LeaveHistory l WHERE l.employeeId=:empid AND (l.status='SUBMITTED'OR l.status='UPDATED')")
+	ArrayList<LeaveHistory> findSubmittedLeaveHistoryByEID(@Param("empid") int empid);
 
 	
 	

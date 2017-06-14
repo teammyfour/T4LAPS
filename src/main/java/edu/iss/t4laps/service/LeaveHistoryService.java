@@ -18,5 +18,8 @@ public interface LeaveHistoryService {
 	public int findTotalDays(int empId,String leaveType);
 	public int findAnualWorkingDays(int empid);
 	public int findMedicalWorkingDays(int empid);
+	 public  ArrayList<LeaveHistory> findSubmittedLeaveHistoryByEID(int empid);
+		public LeaveHistory findLeaveHistory(int id);	
+		public LeaveHistory changeLeaveHistory(LeaveHistory leaveHistory);
 
 }
