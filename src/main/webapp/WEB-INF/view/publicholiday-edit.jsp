@@ -20,7 +20,11 @@
 		<tbody>
 			<tr>
 				<th>Holiday Date</th>
+<<<<<<< HEAD
 				<td><form:input size="16" path="holiday_date" readonly="true"/>
+=======
+				<td><form:input size="16" path="holiday_date" readonly="true" />
+>>>>>>> branch 'master' of https://github.com/teammyfour/T4LAPS.git
 				<form:errors path="holiday_date" cssStyle="color: red;" />
 				</td>	
 			</tr>
