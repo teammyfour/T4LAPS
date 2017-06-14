@@ -5,16 +5,23 @@
 <spring:url value="/css/simple.css" var="style"/>
 <link rel="STYLESHEET" type="text/css"
 	href="${style}" />
-<form:form modelAttribute="user" method="POST" action="${pageContext.request.contextPath}/home/authenticate" >
+<form:form commandName="user" method="POST"  action="${pageContext.request.contextPath}/home/authenticate" >
+
 	<table class="framed" >
+	<tr><td><font color="red">${message}</font></td></tr>
 		<tr>
 			<td>
-			<spring:message code="Username" /></td>
-			<td colspan="3"><form:input path="userId" size="40" /></td>
+			<font size="3" font face="georgia">
+			<spring:message code="UserId" /></font></td>
+			<td colspan="3"><form:input path="userId" size="40"  required="required"/>
+			</td>
 		</tr>
 		<tr>
-			<td><spring:message code="Password" /></td>
-			<td colspan="3"><form:password path="password" size="40" /></td>
+			<td>
+			<font size="3" font face="georgia">
+			<spring:message code="Password" /></font></td>
+			<td colspan="3"><form:password path="password" size="40" required="required" />
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4">&nbsp;</td>

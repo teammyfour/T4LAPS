@@ -92,4 +92,10 @@ public class UserServiceImpl implements UserService{
 		return userRepository.findUserByEmployeeId(id);
 	}
 
+	@Override
+	@Transactional
+	public int validateUser(String userId, String password) {
+		return userRepository.validateUser(userId, password);
+	}
+
 }

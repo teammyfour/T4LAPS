@@ -15,15 +15,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "user_details")
 public class User {
+	@NotEmpty
 	@Id
 	private String userId;
 	@Basic(optional = false)
 	@Column(name = "user_name")
 	private String name;
+	 @NotEmpty(message = "Please enter your password.")
 	private String password;
 	private int employeeId;
 

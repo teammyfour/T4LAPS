@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<font size="2" font face="georgia">
 <c:url value="/logout" var="logout" />
 <ul>
 	<c:if test="${sessionScope.USERSESSION.user.roleSet.size() gt 0}">
@@ -17,7 +18,7 @@
                           htmlEscape="true" /> <a href="${mentitlement}"> <spring:message
                              code="Maintain Entitlement" />
                    </a></li>
-					<li><a href="${pageContext.request.contextPath}/adminholiday/publicholiday/list"">Maintain Public Holiday</a></li>
+					<li><a href="${pageContext.request.contextPath}/adminholiday/publicholiday/list">Maintain Public Holiday</a></li>
                 <li><spring:url value="/admin/logout" var="logout"
 							htmlEscape="true" /> <a href="${logout}"> <spring:message
 								code="logout" />
@@ -65,5 +66,5 @@
 
 		</c:forEach>
 	</c:if>
-
 </ul>
+</font>

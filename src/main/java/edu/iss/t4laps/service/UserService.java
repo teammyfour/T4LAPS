@@ -17,6 +17,7 @@ public interface UserService {
 	ArrayList<String> findManagerNameByUID(String userId);	
 	User authenticate(String uname, String pwd);
 	User findUserByEmployeeId(int id);
+	int validateUser(String userId, String password);
 
 }
 

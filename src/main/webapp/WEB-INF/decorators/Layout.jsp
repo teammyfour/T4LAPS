@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
+
 <%@include file="Header.jsp"%>
 <c:url value="/css/simple.css" var="ss"/>
 <link rel="STYLESHEET" type="text/css"
