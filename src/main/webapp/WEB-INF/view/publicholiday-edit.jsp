@@ -15,6 +15,7 @@
 <h3>Edit Public Holiday page</h3>
 
 <form:form method="POST" commandName="publicholiday"	action="${pageContext.request.contextPath}/adminholiday/publicholiday/edit/${publicholiday.holiday_date}">
+	<div>${message}</div>
 	<table>
 		<tbody>
 			<tr>

@@ -8,9 +8,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_role")
 public class EmpUserRole {
-		@Id
+		
 		@Column(name = "roleId")
 		private String roleId;
+		@Id
 		@Column(name = "userId")
 		private String userID;
 			public EmpUserRole() {
@@ -20,6 +21,12 @@ public class EmpUserRole {
 				this.roleId = roleId;
 				this.userID = userID;
 			}
+			public EmpUserRole(String roleId) {
+				super();
+				this.roleId = roleId;
+			}
+			
+			
 			public String getRoleId() {
 				return roleId;
 			}
