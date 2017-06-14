@@ -9,8 +9,10 @@
 </head>
 <body>
 	<h3>Public Holiday List page</h3>
-	
-	<c:if test="${fn:length(publicholidayList) gt 0}">
+	<div>${message}</div>
+	<a href="${pageContext.request.contextPath}/adminholiday/publicholiday/create">Add
+		Public Holiday</a>
+	<c:if test="${fn:length(publicholidayList) gt 0}">	
 		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
 			<thead>
 				<tr class="listHeading">
@@ -34,7 +36,6 @@
 			</tbody>
 		</table>
 	</c:if>
-	<a href="${pageContext.request.contextPath}/adminholiday/publicholiday/create">Add
-		Public Holiday</a>
+	
 </body>
 </html>
