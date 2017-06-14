@@ -9,19 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import edu.iss.t4laps.model.LeaveHistory;
 import edu.iss.t4laps.repository.LeaveHistoryRepository;
 
-
 @Service
 
-public class LeaveHistoryServiceImpl implements LeaveHistoryService{
-	
-	
+public class LeaveHistoryServiceImpl implements LeaveHistoryService {
+
 	@Resource
 	private LeaveHistoryRepository leavehistoryRepository;
-	
+
 	@Override
 	@Transactional
 	public LeaveHistory insertLeave(LeaveHistory leavehistory) {
@@ -58,16 +55,18 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public int updateLeaveHistory(int leaveId,int empId,String leavetype,Date sDate,Date eDate,String reason,String status,int workingDays) {
+	public int updateLeaveHistory(int leaveId, int empId, String leavetype, Date sDate, Date eDate, String reason,
+			String status, int workingDays) {
 		// TODO Auto-generated method stub
-		return leavehistoryRepository.updateLeaveHistory(empId, leavetype, sDate, eDate, reason, status, leaveId,workingDays);
+		return leavehistoryRepository.updateLeaveHistory(empId, leavetype, sDate, eDate, reason, status, leaveId,
+				workingDays);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public int updateStatus(int leaveId,String status) {
+	public int updateStatus(int leaveId, String status) {
 		// TODO Auto-generated method stub
-		return leavehistoryRepository.updateStatus(status,leaveId);
+		return leavehistoryRepository.updateStatus(status, leaveId);
 	}
 
 	@Override
@@ -77,9 +76,9 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 	}
 
 	@Override
-	public int findTotalDays(int empId,String leaveType) {
+	public int findTotalDays(int empId, String leaveType) {
 		// TODO Auto-generated method stub
-		return leavehistoryRepository.findTotalDays(empId,leaveType);
+		return leavehistoryRepository.findTotalDays(empId, leaveType);
 	}
 
 	@Override
@@ -93,20 +92,23 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	@Override
 	@Transactional
 	public LeaveHistory changeLeaveHistory(LeaveHistory leavehistory) {
 		return leavehistoryRepository.saveAndFlush(leavehistory);
 	}
+
 	@Override
 	@Transactional
-	public ArrayList<LeaveHistory> findSubmittedLeaveHistoryByEID(int empid){
+	public ArrayList<LeaveHistory> findSubmittedLeaveHistoryByEID(int empid) {
 		return leavehistoryRepository.findSubmittedLeaveHistoryByEID(empid);
 	}
+
 	@Override
 	@Transactional
-	public LeaveHistory findLeaveHistory(int id){
+	public LeaveHistory findLeaveHistory(int id) {
 		return leavehistoryRepository.findOne(id);
 	}
-	
+
 }

@@ -23,8 +23,8 @@
 	<td><c:out value="${leaveHistory.leaveId }"></c:out></td>
 	<td><c:out value="${leaveHistory.employeeId }"></c:out></td>
 	<td><c:out value="${leaveHistory.leavetype }"></c:out></td>
-	<td><c:out value="${leaveHistory.startDate }"></c:out></td>
-	<td><c:out value="${leaveHistory.endDate }"></c:out></td>
+	<td><fmt:formatDate type = "date" dateStyle = "long" pattern = "dd-MMM-yyyy" value = "${leaveHistory.startDate}" /></td>
+	<td><fmt:formatDate type = "date" dateStyle = "long" pattern = "dd-MMM-yyyy" value = "${leaveHistory.endDate}" /></td>
 	<td><c:out value="${leaveHistory.reason }"></c:out></td>
 	<td><c:out value="${leaveHistory.status }"></c:out></td>
 	</tr>
