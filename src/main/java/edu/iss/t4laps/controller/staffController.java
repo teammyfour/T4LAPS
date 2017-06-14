@@ -69,9 +69,10 @@ public class staffController {
 	    int appliedLeaveDays=leaveHistoryService.findTotalDays(emplyeeId,leavetype);
 	    int annualLeaves=leaveHistoryService.findAnualWorkingDays(emplyeeId);
 	    int medicalLeaves=leaveHistoryService.findMedicalWorkingDays(emplyeeId);
+	    int remaining_workingDays=annualLeaves-appliedLeaveDays;
 	    ModelAndView mv=new ModelAndView();
 	    
-	    if(appliedLeaveDays <= annualLeaves && workingDays<=14 )
+	    if(appliedLeaveDays <= annualLeaves && workingDays<=14  && workingDays <=remaining_workingDays)
 	    {
 	    LeaveHistory leavehistory = new LeaveHistory(emplyeeId, leavetype, date, date1, reason, status,workingDays);
 	    leaveHistoryService.insertLeave(leavehistory);
@@ -123,7 +124,8 @@ public class staffController {
 	{
 		Date date = null;
 		Date date1 = null;
-		int leaveId=(int) (req.getSession().getAttribute("leaveId"));
+		int leaveId=(int)(req.getSession().getAttribute("leaveId"));
+		
 		UserSession us= (UserSession) session.getAttribute("USERSESSION");
 		int emplyeeId = (us.getEmployee().getEmployeeId());
 		req.getSession().setAttribute("empId", emplyeeId);
@@ -152,13 +154,28 @@ public class staffController {
 	    workingDays=workingDays-numOfPublicholidays;
 	    //LeaveHistory leavehistory = new LeaveHistory(leaveId,emplyeeId, leavetype, date, date1, reason, status,workingDays);
 	    
-	    int rows_affected=leaveHistoryService.updateLeaveHistory(leaveId,emplyeeId, leavetype, startDateSql,  endDateSql, reason, status,workingDays);
-	    ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(emplyeeId);
+	    int appliedLeaveDays=leaveHistoryService.findTotalDays(emplyeeId,leavetype);
+	    int annualLeaves=leaveHistoryService.findAnualWorkingDays(emplyeeId);
+	    int medicalLeaves=leaveHistoryService.findMedicalWorkingDays(emplyeeId);
+	    int remaining_workingDays=annualLeaves-appliedLeaveDays;
 	    ModelAndView mv=new ModelAndView();
+	    if(appliedLeaveDays <= annualLeaves && workingDays<=14  && workingDays <=remaining_workingDays)
+	    {
+	    LeaveHistory leavehistory = new LeaveHistory(emplyeeId, leavetype, date, date1, reason, status,workingDays);
+	    leaveHistoryService.insertLeave(leavehistory);
+	    ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(emplyeeId);
+	    String email_id=leaveHistoryService.findEmailId(emplyeeId);
+	    EmailNotification emailNotification=new EmailNotification();
+	    emailNotification.sendEmail(email_id,emplyeeId);
+	  
 	    mv.setViewName("viewleavehistory");
 	    mv.addObject("leavehistoryList",leaveHistoryList);
-		
-		return mv;
+	    }
+	    else
+	    {
+	    	mv.setViewName("noLeavesBalance");
+	    }
+	 return mv;
 	}
 	@RequestMapping(value="/applyleave_cancel")
 	public ModelAndView leaveHistoryCancel(HttpServletRequest req, HttpServletResponse res,HttpSession session)
