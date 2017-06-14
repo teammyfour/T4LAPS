@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>Email Address</td>
-				<td><form:input path="employee.email_address" type="email"/></td>
+				<td><form:input path="employee.email_address"/></td>
 				<td><form:errors path="employee.email_address" cssStyle="color: red;" /></td>
 			</tr>
 			<tr>
@@ -51,6 +51,14 @@
     				 <form:options items="${managerList}"/>
  					</form:select></td>
 				<td><form:errors path="employee.managerId" cssStyle="color: red;" /></td>
+			</tr>
+			<tr>
+				<td>Role ID</td>
+				<td><%-- <form:input path="managerId" /> --%>
+				<form:select path="userRole.roleId">
+    				 <form:options items="${roleList}"/>
+ 					</form:select></td>
+				<td><form:errors path="userRole.roleId" cssStyle="color: red;" /></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Create" /></td>

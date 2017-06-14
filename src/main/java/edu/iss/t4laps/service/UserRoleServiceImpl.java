@@ -65,4 +65,9 @@ public class UserRoleServiceImpl implements UserRoleService{
 		return userRoleRepository.findRoleByName(name);
 	}
 
+	@Override
+	@Transactional
+	public ArrayList<String> findAllRoleId() {
+		return userRoleRepository.findAllRoleId();
+	}
 }
