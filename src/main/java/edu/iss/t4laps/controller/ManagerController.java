@@ -3,6 +3,7 @@ package edu.iss.t4laps.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import edu.iss.t4laps.javabeans.Approve;
 import edu.iss.t4laps.model.EmployeeDetails;
 import edu.iss.t4laps.model.LeaveHistory;
 import edu.iss.t4laps.service.LeaveHistoryService;
+import edu.iss.t4laps.validator.EmailNotification;
 
 @RequestMapping(value = "/manager")
 @Controller
@@ -53,10 +55,18 @@ public class ManagerController {
 		return mav;
 
 	}
+	
+	@RequestMapping(params="cancel" , method=RequestMethod.POST)
+	public String cancelButton(HttpServletRequest request){
+		return "redirect:/manager/approval.html";
+	}
 
 	@RequestMapping(value = "/detail/display/{id}", method = RequestMethod.GET)
-	public ModelAndView newDepartmentPage(@PathVariable int id) {
+	public ModelAndView newDepartmentPage(@PathVariable int id,HttpServletRequest req) {
 		LeaveHistory leaveHistory = lService.findLeaveHistory(id);
+		int emplyeeId =Integer.parseInt(req.getParameter("empid")) ;
+		req.getSession().setAttribute("employeeId", emplyeeId);
+		System.out.println(emplyeeId);
 		ModelAndView mav = new ModelAndView("manager-leave-details", "leaveHistory", leaveHistory);
 		mav.addObject("approve", new Approve());
 
@@ -66,20 +76,26 @@ public class ManagerController {
 
 	@RequestMapping(value = "/detail/edit/{id}", method = RequestMethod.POST)
 	public ModelAndView approveOrRejectLeave(@ModelAttribute("approve") Approve approve, BindingResult result,
-			@PathVariable Integer id, HttpSession session, final RedirectAttributes redirectAttributes) {
+			@PathVariable Integer id, HttpSession session, final RedirectAttributes redirectAttributes,HttpServletRequest req) {
 		if (result.hasErrors())
 			return new ModelAndView("manager-leave-details");
 		LeaveHistory l = lService.findLeaveHistory(id);
 		UserSession us = (UserSession) session.getAttribute("USERSESSION");
+		int emplyeeId =(int) req.getSession().getAttribute("employeeId");
+	
 		if (approve.getDecision().equalsIgnoreCase(LeaveHistory.APPROVED)) {
 			l.setStatus(LeaveHistory.APPROVED);
 		} else {
 			l.setStatus(LeaveHistory.REJECTED);
 		}
 		lService.changeLeaveHistory(l);
+		String status=l.getStatus();
 		ModelAndView mav = new ModelAndView("redirect:/manager/approval");
 		String message = "Your Status was successfully updated.";
 		redirectAttributes.addFlashAttribute("message", message);
+		  String email_id=lService.findEmpEmailId(emplyeeId);
+		    EmailNotification emailNotification=new EmailNotification();
+		    emailNotification.sendApprovalEmail(email_id, emplyeeId, status);
 
 		return mav;
 

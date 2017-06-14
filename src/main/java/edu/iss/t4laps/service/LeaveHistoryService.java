@@ -35,5 +35,7 @@ public interface LeaveHistoryService {
 	public LeaveHistory findLeaveHistory(int id);
 
 	public LeaveHistory changeLeaveHistory(LeaveHistory leaveHistory);
+	
+	public String findEmpEmailId(int empId);
 
 }

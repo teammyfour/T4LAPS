@@ -110,5 +110,10 @@ public class LeaveHistoryServiceImpl implements LeaveHistoryService {
 	public LeaveHistory findLeaveHistory(int id) {
 		return leavehistoryRepository.findOne(id);
 	}
+	@Override
+	public String findEmpEmailId(int empId) {
+		// TODO Auto-generated method stub
+		return leavehistoryRepository.findEmpEmailId(empId);
+	}
 
 }
