@@ -2,9 +2,13 @@ package edu.iss.t4laps.controller;
 
 
 import java.util.List;
+import java.util.Locale;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +32,9 @@ import edu.iss.t4laps.validator.PublicHolidayValidator;
 
 
 
-
-@RequestMapping(value="/adminholiday")
 @Controller
+@RequestMapping(value="/adminholiday")
+
 public class AdminPublicHolidayController {
 	@Autowired
 	private PublicHolidayService phService;
@@ -96,10 +100,29 @@ public class AdminPublicHolidayController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/publicholiday/edit/{occasion}", method = RequestMethod.GET)
-	public ModelAndView editpublicholidayPage(@PathVariable String occasion) {
+//	@RequestMapping(value = "/publicholiday/edit/{occasion}", method = RequestMethod.GET)
+//	public ModelAndView editpublicholidayPage(@PathVariable String occasion) {
+//		ModelAndView mav = new ModelAndView("publicholiday-edit");
+//		PublicHolidays holiday = phService.findPublicHoldiayByOcasion(occasion);
+//		mav.addObject("publicholiday",holiday);
+//		return mav;
+//	}
+	
+
+	@RequestMapping(value = "/publicholiday/edit/", method = RequestMethod.GET)
+	public ModelAndView editpublicholidayPage(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("publicholiday-edit");
-		PublicHolidays holiday = phService.findPublicHoldiayByOcasion(occasion);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+		String holiday_dates=req.getParameter("holiday_date");
+		Date date1=null;
+		try {
+			date1 = format.parse(holiday_dates);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		java.sql.Date startDateSql = new java.sql.Date(date1.getTime());
+		PublicHolidays holiday = phService.findPublicHoliday(startDateSql);
 		mav.addObject("publicholiday",holiday);
 		return mav;
 	}

@@ -14,12 +14,12 @@
 </script>
 <h3>Edit Public Holiday page</h3>
 
-<form:form method="POST" commandName="publicholiday"	action="${pageContext.request.contextPath}/adminholiday/publicholiday/edit/${publicholiday.occasion}">
+<form:form method="POST" commandName="publicholiday"	action="${pageContext.request.contextPath}/adminholiday/publicholiday/edit/${publicholiday.holiday_date}">
 	<table>
 		<tbody>
 			<tr>
 				<th>Holiday Date</th>
-				<td><form:input size="16" path="holiday_date" readonly="true"/>
+				<td><form:input size="16" path="holiday_date"/>
 				<form:errors path="holiday_date" cssStyle="color: red;" />
 				</td>	
 			</tr>

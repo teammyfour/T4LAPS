@@ -25,8 +25,8 @@
 					<tr class="listHeading">
 						<td>${holiday.holiday_date}</td>
 						<td>${holiday.occasion}</td>
-						<td align="center"><a
-							href="${pageContext.request.contextPath}/adminholiday/publicholiday/edit/${holiday.occasion}.html">Edit</a></td>
+						<td align="center"><c:url var="holidayUrl" value="/adminholiday/publicholiday/edit/" /><a
+							href="${holidayUrl}?holiday_date=${holiday.holiday_date}">Edit</a></td>
 						<td><a
 							href="${pageContext.request.contextPath}/adminholiday/publicholiday/delete/${holiday.occasion}.html">Delete</a></td>
 					</tr>
