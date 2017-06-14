@@ -22,13 +22,16 @@ import edu.iss.t4laps.exception.EmployeeNotFound;
 import edu.iss.t4laps.exception.EntitlementNotFound;
 import edu.iss.t4laps.exception.OvertimeNotFound;
 import edu.iss.t4laps.model.CombinedCommand;
+import edu.iss.t4laps.model.EmpUserRole;
 import edu.iss.t4laps.model.EmployeeDetails;
 import edu.iss.t4laps.model.LeaveEntitlement;
 import edu.iss.t4laps.model.Overtime;
 import edu.iss.t4laps.model.User;
 import edu.iss.t4laps.service.EmployeeService;
+import edu.iss.t4laps.service.EmployeeUserRoleService;
 import edu.iss.t4laps.service.EntitlementService;
 import edu.iss.t4laps.service.OvertimeService;
+import edu.iss.t4laps.service.UserRoleService;
 import edu.iss.t4laps.service.UserService;
 import edu.iss.t4laps.validator.CombinedCommandValidator;
 import edu.iss.t4laps.validator.EmployeeValidator;
@@ -46,6 +49,12 @@ public class AdminController{
 	
 	@Autowired
 	private EntitlementService enService;
+	
+	@Autowired
+	private UserRoleService urService;
+	
+	@Autowired
+	private EmployeeUserRoleService eurService;
 	
 	@Autowired
 	private UserService uService;
@@ -151,42 +160,49 @@ public class AdminController{
 	}
 
 	@RequestMapping(value = "/employee/create", method = RequestMethod.GET)
-	public ModelAndView newEmployeePage() {
-		EmployeeDetails employee=new EmployeeDetails();
-		ModelAndView mav = new ModelAndView("admin-employee-create", "combinedCommand", new CombinedCommand());
-		ArrayList<Integer> list = eService.findAllID();
-		mav.addObject("managerList", list);
-		return mav;
-	}
-	
-	@RequestMapping(value = "/employee/create", method = RequestMethod.POST)
-	public ModelAndView createNewEmployeeRecord(@Valid @ModelAttribute("combinedCommand") CombinedCommand cc, BindingResult result,
-			final RedirectAttributes redirectAttributes) {
-
-		if (result.hasErrors())
-		{
-			ModelAndView mav = new ModelAndView("admin-employee-create");
-			ArrayList<Integer> list = eService.findAllID();
-			mav.addObject("managerList", list);
-			return mav;
-		}
-		
-		
-		ModelAndView mav = new ModelAndView();
-		
-		String message = "Employee of name: " + cc.getEmployee().getEmp_name()+", id " + cc.getEmployee().getEmployeeId() + "and userid "+cc.getUser().getUserId()+"was successfully created.";
-		User newUser=cc.getUser();
-		eService.createEmployee(cc.getEmployee());
-		newUser.setName(cc.getEmployee().getEmp_name());
-		newUser.setPassword(cc.getEmployee().getEmp_name());
-		newUser.setEmployeeId(cc.getEmployee().getEmployeeId());
-		uService.createUser(newUser);
-		mav.setViewName("redirect:/admin/employee/general");
-
-		redirectAttributes.addFlashAttribute("message", message);
-		return mav;
-	}
-	
+	 public ModelAndView newEmployeePage() {
+	  //EmployeeDetails employee=new EmployeeDetails();
+	  ModelAndView mav = new ModelAndView("admin-employee-create", "combinedCommand", new CombinedCommand());
+	  ArrayList<Integer> list = eService.findAllID();
+	  mav.addObject("managerList", list);
+	  ArrayList<String> list2 = urService.findAllRoleId();
+	  mav.addObject("roleList", list2);
+	  return mav;
+	 }
+	 
+	 @RequestMapping(value = "/employee/create", method = RequestMethod.POST)
+	 public ModelAndView createNewEmployeeRecord(@Valid @ModelAttribute("combinedCommand") CombinedCommand cc, BindingResult result,
+	   final RedirectAttributes redirectAttributes) {
+	  if (result.hasErrors())
+	  {
+	   ModelAndView mav = new ModelAndView("admin-employee-create");
+	   ArrayList<Integer> list = eService.findAllID();
+	   mav.addObject("managerList", list);
+	   ArrayList<String> list2 = urService.findAllRoleId();
+	   mav.addObject("roleList", list2);
+	   return mav;
+	  }
+	  
+	  
+	  ModelAndView mav = new ModelAndView();
+	  
+	  String message = "Employee of name: " + cc.getEmployee().getEmp_name()+", id " + cc.getEmployee().getEmployeeId() + "and userid "+cc.getUser().getUserId()+"was successfully created.";
+	  
+	  
+	  eService.createEmployee(cc.getEmployee());
+	  User newUser=cc.getUser();
+	  newUser.setName(cc.getEmployee().getEmp_name());
+	  newUser.setPassword(cc.getEmployee().getEmp_name());
+	  newUser.setEmployeeId(cc.getEmployee().getEmployeeId());
+	  uService.createUser(newUser);
+	  EmpUserRole ur = cc.getUserRole();
+	  ur.setUserID(newUser.getUserId());
+	  eurService.createEmpUserRole(ur);
+	  mav.setViewName("redirect:/admin/employee/general");
+	  redirectAttributes.addFlashAttribute("message", message);
+	  return mav;
+	 }
+			
 	@RequestMapping(value = "/employee/general", method = RequestMethod.GET)
 	public ModelAndView adminEmployee() {
 		ModelAndView mav = new ModelAndView("admin-employee");
@@ -215,9 +231,9 @@ public class AdminController{
 
 		ModelAndView mav = new ModelAndView("redirect:/admin/employee/general");
 		EmployeeDetails employee = eService.findEmployee(id);
-		User u = uService.findUserByEmployeeId(id);
+		//User u = uService.findUserByEmployeeId(id);
 		eService.removeEmployee(employee);
-		uService.removeUser(u);
+		//uService.removeUser(u);
 		String message = "The record for employee " + employee.getEmp_name() + " was successfully deleted.";
 
 		redirectAttributes.addFlashAttribute("message", message);
@@ -237,11 +253,11 @@ public class AdminController{
 
 
 		eService.removeEmployee(employee);
-		User u = uService.findUserByEmployeeId(id);
-		uService.removeUser(u);
+		//User u = uService.findUserByEmployeeId(id);
+		//uService.removeUser(u);
 		employee.setEmployeeId(id);
 		eService.changeEmployee(employee);
-		uService.changeUser(u);
+		//uService.changeUser(u);
 		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
 	}
