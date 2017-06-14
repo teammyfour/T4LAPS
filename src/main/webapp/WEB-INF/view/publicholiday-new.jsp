@@ -14,7 +14,7 @@
 <h3>New Public Holiday page</h3>
 <form:form method="POST" commandName="publicholiday"
 	action="${pageContext.request.contextPath}/adminholiday/publicholiday/create">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<a href="${pageContext.request.contextPath}/adminholiday/publicholiday/list">List
 		Public Holiday</a>
 	<table>

@@ -15,16 +15,16 @@
 <h3>Edit Public Holiday page</h3>
 
 <form:form method="POST" commandName="publicholiday"	action="${pageContext.request.contextPath}/adminholiday/publicholiday/edit/${publicholiday.holiday_date}">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			<tr>
 				<th>Holiday Date</th>
-<<<<<<< HEAD
+
 				<td><form:input size="16" path="holiday_date" readonly="true"/>
-=======
+
 				<td><form:input size="16" path="holiday_date" readonly="true" />
->>>>>>> branch 'master' of https://github.com/teammyfour/T4LAPS.git
+
 				<form:errors path="holiday_date" cssStyle="color: red;" />
 				</td>	
 			</tr>

@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<font size="2" font face="georgia">
+<font size="2" font face="georgia" font color="black">
 <c:url value="/logout" var="logout" />
 <ul>
 	<c:if test="${sessionScope.USERSESSION.user.roleSet.size() gt 0}">

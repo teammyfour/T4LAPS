@@ -7,7 +7,7 @@
 
 <form:form method="POST" commandName="overtime"
 	action="${pageContext.request.contextPath}/admin/overtime/edit/${overtime.overtimeId}.html">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			<tr>

@@ -7,7 +7,7 @@
 
 <form:form method="POST" commandName="employee"
 	action="${pageContext.request.contextPath}/admin/employee/edit/${employee.employeeId}.html" onsubmit="return validateForm();">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			<tr>

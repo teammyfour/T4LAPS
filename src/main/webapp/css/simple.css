@@ -105,12 +105,12 @@ ul li a {
 }
  
 ul li a:visited {
-    color: white;
+    color: black;
 }
  
  ul li a:hover, ul li  {
     color: white;
-    background-color: #675FD3      ;
+    background-color: #675FD3;
 }
 
 table

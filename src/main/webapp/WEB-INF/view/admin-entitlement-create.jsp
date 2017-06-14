@@ -6,7 +6,7 @@
 <h3>New Entitlement Record</h3>
 <form:form method="POST" commandName="entitlement"
 	action="${pageContext.request.contextPath}/admin/entitlement/create.html">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			<tr>

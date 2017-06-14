@@ -7,7 +7,7 @@
 
 <form:form method="POST" commandName="entitlement"
 	action="${pageContext.request.contextPath}/admin/entitlement/edit/${entitlement.designation}.html">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			<tr>

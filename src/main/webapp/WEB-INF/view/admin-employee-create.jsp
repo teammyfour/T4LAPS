@@ -5,7 +5,7 @@
 <h3>New Employee Record</h3>
 <form:form method="POST" commandName="combinedCommand"
 	action="${pageContext.request.contextPath}/admin/employee/create.html">
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<table>
 		<tbody>
 			

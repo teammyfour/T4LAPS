@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>Public Holiday List page</h3>
-	<div>${message}</div>
+	<div><font color="green">${message}</font></div>
 	<a href="${pageContext.request.contextPath}/adminholiday/publicholiday/create">Add
 		Public Holiday</a>
 	<c:if test="${fn:length(publicholidayList) gt 0}">	

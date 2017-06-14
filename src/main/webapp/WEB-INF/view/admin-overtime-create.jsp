@@ -6,7 +6,7 @@
 <h3>New Overtime Record</h3>
 <form:form method="POST" commandName="overtime"
 	action="${pageContext.request.contextPath}/admin/overtime/create.html">
-	<div>${message}</div>
+	<div><font color="green">${message}</font>age}</div>
 	<table>
 		<tbody>
 			<tr>

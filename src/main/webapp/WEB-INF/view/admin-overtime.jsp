@@ -13,7 +13,7 @@
 <h3>Admin Overtime page</h3>
 	<a href="${pageContext.request.contextPath}/admin/overtime/create">Add
 		Overtime Record</a>
-		<div>${message}</div>
+		<div><font color="green">${message}</font></div>
 		<table style="cellspacing: 2; cellpadding: 2; border: 1;">
 			<thead>
 				<tr class="listHeading">
