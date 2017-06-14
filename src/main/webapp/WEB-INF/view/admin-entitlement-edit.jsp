@@ -16,12 +16,12 @@
 				<td><form:errors path="designation" cssStyle="color: red;" /></td>
 			</tr>
 			<tr>
-				<td>No. of days of annual leave</td>
+				<td> Annual leaves</td>
 				<td><form:input path="annual_leave" /></td>
 				<td><form:errors path="annual_leave" cssStyle="color: red;" /></td>
 			</tr>
 		<tr>
-				<td>Extra Hours</td>
+				<td>Medical Leaves</td>
 				<td><form:input path="medical_leave" /></td>
 				<td><form:errors path="medical_leave" cssStyle="color: red;" /></td>
 			</tr>

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.iss.t4laps.model.LeaveHistory;
 import edu.iss.t4laps.service.LeaveHistoryService;
@@ -72,6 +73,7 @@ public class staffController {
 	    int remaining_workingDays=annualLeaves-appliedLeaveDays;
 	    ModelAndView mv=new ModelAndView();
 	    
+	    
 	    if(appliedLeaveDays <= annualLeaves && workingDays<=14  && workingDays <=remaining_workingDays)
 	    {
 	    LeaveHistory leavehistory = new LeaveHistory(emplyeeId, leavetype, date, date1, reason, status,workingDays);
@@ -84,6 +86,7 @@ public class staffController {
 	    mv.setViewName("viewleavehistory");
 	    mv.addObject("leavehistoryList",leaveHistoryList);
 	    }
+	    
 	    else
 	    {
 	    	mv.setViewName("noLeavesBalance");
@@ -120,7 +123,7 @@ public class staffController {
 	   return mv;
    }
 	@RequestMapping(value="/leavehistory_edit")
-	public ModelAndView leaveHistoryEdit(HttpServletRequest req, HttpServletResponse res,HttpSession session)
+	public ModelAndView leaveHistoryEdit(HttpServletRequest req, HttpServletResponse res,HttpSession session,final RedirectAttributes redirectAttributes)
 	{
 		Date date = null;
 		Date date1 = null;
@@ -161,8 +164,8 @@ public class staffController {
 	    ModelAndView mv=new ModelAndView();
 	    if(appliedLeaveDays <= annualLeaves && workingDays<=14  && workingDays <=remaining_workingDays)
 	    {
-	    LeaveHistory leavehistory = new LeaveHistory(emplyeeId, leavetype, date, date1, reason, status,workingDays);
-	    leaveHistoryService.insertLeave(leavehistory);
+
+	    leaveHistoryService.updateLeaveHistory(leaveId, emplyeeId, leavetype, startDateSql, endDateSql, reason, status, workingDays);
 	    ArrayList<LeaveHistory> leaveHistoryList=leaveHistoryService.findAll(emplyeeId);
 	    String email_id=leaveHistoryService.findEmailId(emplyeeId);
 	    EmailNotification emailNotification=new EmailNotification();
@@ -175,6 +178,10 @@ public class staffController {
 	    {
 	    	mv.setViewName("noLeavesBalance");
 	    }
+	    
+	    String message=" Leave Id: "+leaveId+ " updated Successfully";
+	    
+	    req.setAttribute("message", message);
 	 return mv;
 	}
 	@RequestMapping(value="/applyleave_cancel")
@@ -192,6 +199,9 @@ public class staffController {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("viewleavehistory");
 		mv.addObject("leavehistoryList",leaveHistoryList);
+		 String message=" Leave Id: "+leaveId+ " cancelled Successfully ";
+		    
+		    req.setAttribute("message", message);
 		return mv;
 	}
 	@RequestMapping(value="/applycompensationleave")

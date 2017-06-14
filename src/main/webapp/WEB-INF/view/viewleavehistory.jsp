@@ -11,6 +11,7 @@
 <body>
 
 <h3> Leave History
+<div>${message}</div>
 
 <table>
 <tr><td>LeaveID</td><td>EmployeeID</td><td>LeaveType</td><td>StartDate</td><td>EndDate</td><td>LeaveDays</td><td>reason</td>
