@@ -20,7 +20,7 @@
 		<tbody>
 			<tr>
 				<th>Holiday Date</th>
-				<td><form:input size="16" path="holiday_date"/>
+				<td><form:input size="16" path="holiday_date" readonly="true" />
 				<form:errors path="holiday_date" cssStyle="color: red;" />
 				</td>	
 			</tr>
